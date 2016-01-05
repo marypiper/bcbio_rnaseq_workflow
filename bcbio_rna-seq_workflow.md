@@ -7,11 +7,11 @@
 	- Add lein location to path in `~/.bashrc`:
 		- `export PATH=~/bin:$PATH`
 	- I could not get pandoc installed
-1. Make directory structure 
+2. Make directory structure 
     - `cd /n/data/q/cores/bcbio/`
     - `mkdir analysis meta config data`
     
-2. Download fastq files from facility to data folder
+3. Download fastq files from facility to data folder
 	
 	- Download fastq files from a non-password protected url
     		- `wget --mirror url` (for each file of sample in each lane)
@@ -32,7 +32,7 @@
 		- `mget *.tab`
 		- `mget *.bz2`
 
-3. Settings for bcbio: make sure you have following settings in `~/.bashrc` file:
+4. Settings for bcbio: make sure you have following settings in `~/.bashrc` file:
  
  	```
  unset PYTHONHOME
@@ -43,12 +43,12 @@
  export PATH=/opt/bcbio/centos/bin:$PATH
  ```
     
-4. Within the `meta` folder, add your comma-separated metadata file
+5. Within the `meta` folder, add your comma-separated metadata file
     - column entitled `description` is your names of your fastq files without the extension (.fastq) 
     - column entitled `samplegroup` is your sample groups
     - additional specifics regarding the metadata file: [http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration](http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration) 
         
-5. Within the `config` folder, add your custom Illumina template
+6. Within the `config` folder, add your custom Illumina template
     - Example template for human RNA-seq using Illumina prepared samples (genome_build for mouse: mm10):
 
 	```
@@ -67,7 +67,7 @@
 	- Additional parameters can be found: [http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration](http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration) 
 
  
-6. Within the `data` folder, add all your fastq files to analyze.
+7. Within the `data` folder, add all your fastq files to analyze.
 
 ##Analysis
 
