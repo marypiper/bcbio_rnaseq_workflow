@@ -34,7 +34,7 @@
 
 
 
-4. Settings for bcbio: make sure you have following settings in `~/.bashrc` file:
+4. Settings for bcbio- make sure you have following settings in `~/.bashrc` file:
  
  ```
  unset PYTHONHOME
