@@ -26,7 +26,7 @@
     done
     ```
 
-   	b. Download fastq files from BioPolymers: 
+   	- Download fastq files from BioPolymers: 
 		- `sftp username@bpfngs.med.harvard.edu`
 		- `cd` to correct folder
 		- `mget *.tab`
