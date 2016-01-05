@@ -71,7 +71,7 @@
 
 ##Analysis
 
-1. Go to analysis folder and create the full Illumina instructions using the Illumina template created in step #6.
+1. Go to analysis folder and create the full Illumina instructions using the Illumina template created in Set-up: step #6.
     - `bsub -Is -n 4 -q interactive bash` start interactive job
     - `cd path-to-folder/*_RNAseq/analysis` change directories to analysis folder
     - `bcbio_nextgen.py -w template ../config/star-illumina-rnaseq.yaml ../meta/*-rnaseq.csv ../data/*fastq.gz` run command to create the full yam file
