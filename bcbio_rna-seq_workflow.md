@@ -8,7 +8,7 @@
 		- `export PATH=~/bin:$PATH`
 	- I could not get pandoc installed
 2. Make directory structure 
-    - `cd /n/data/q/cores/bcbio/`
+    - `cd path-to-consult-folder`
     - `mkdir analysis meta config data`
     
 3. Download fastq files from facility to data folder
@@ -73,7 +73,7 @@
 
 1. Go to analysis folder and create the full Illumina instructions using the Illumina template created in step #5.
     - `bsub -Is -n 4 -q interactive bash` start interactive job
-    - `cd /n/data1/cores/bcbio/*_RNAseq/analysis` change directories to analysis folder
+    - `cd path-to-folder/*_RNAseq/analysis` change directories to analysis folder
     - `bcbio_nextgen.py -w template ../config/star-illumina-rnaseq.yaml ../meta/*-rnaseq.csv ../data/*fastq.gz` run command to create the full yam file
 
 2. Create script for running the job (in analysis folder)
@@ -84,7 +84,7 @@
 	#BSUB -J *-rnaseq
 	#BSUB -o *-rnaseq.out
 	#BSUB -N
-	#BSUB -u "piper@hsph.harvard.edu"
+	#BSUB -u "email@hsph.harvard.edu"
 	#BSUB -n 1
 	#BSUB -R "rusage[mem=8024]"
 	#BSUB -W 50:00
@@ -100,19 +100,19 @@
 3. Go to work folder and start the job - make sure in an interactive session 
 
 	```
-cd /n/data1/cores/bcbio/*-rnaseq/analysis/*-rnaseq/work
+cd path-to-folder/*-rnaseq/analysis/*-rnaseq/work
 bsub < ../../runJob-*-rnaseq.sh
 ```
 
 ### Exploration of region of interest
 
 1. The bam files will be located here:
-/n/data1/cores/bcbio/*-rnaseq/analysis/*-rnaseq/work/align/SAMPLENAME/NAME_*-rnaseq_star/
+path-to-folder/*-rnaseq/analysis/*-rnaseq/work/align/SAMPLENAME/NAME_*-rnaseq_star/
 
 2. Extracting interesting region (example)
-	- `samtools view -h -b  GBM8_1_5M_cells_20140504.bam "chr2:176927474-177089906" > GBM8_1_5M_cells_20140504_hox.bam`
+	- `samtools view -h -b  sample1.bam "chr2:176927474-177089906" > sample1_hox.bam`
 
-	- `samtools index GBM8_1_5M_cells_20140504_hox.bam`
+	- `samtools index sample1_hox.bam`
 
 ## Report generation
 1. Report creation and creating project_summary.csv
@@ -124,8 +124,8 @@ sub -Is -q interactive bash
 lein run summarize path-to-project-summary.yaml -f "~batch+panel"
 ```
 2. Copy to local computer the results/*-rnaseq/ folder and the results/*-rnaseq/summary/qc-summary.Rmd
-    - `scp -r mp298@orchestra.med.harvard.edu:/n/data1/cores/bcbio/macklis_sox6_rnaseq/run1/analysis1/macklis-rnaseq/results/
-2015-11-26_macklis-rnaseq_unst_run1/ .`
+    - `scp -r username@orchestra.med.harvard.edu:path-to-folder/*-rnaseq/analysis/*-rnaseq/results/
+date_*-rnaseq/ .`
 
 3. Within R Studio:
 - load library(knitrBootstrap)
