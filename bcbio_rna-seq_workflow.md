@@ -32,9 +32,11 @@
 		- `mget *.tab`
 		- `mget *.bz2`
 
+
+
 4. Settings for bcbio: make sure you have following settings in `~/.bashrc` file:
  
- 	```
+ ```
  unset PYTHONHOME
  unset PYTHONPATH
  module load dev/java/jdk1.7
