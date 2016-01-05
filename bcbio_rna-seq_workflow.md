@@ -14,6 +14,7 @@
 3. Download fastq files from facility to data folder
 	
 	- Download fastq files from a non-password protected url
+
     		- `wget --mirror url` (for each file of sample in each lane)
    	 	- Rory's code to concatenate files for the same samples on multiple lanes: 
     
