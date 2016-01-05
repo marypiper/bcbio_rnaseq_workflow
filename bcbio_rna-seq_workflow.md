@@ -106,8 +106,7 @@ bsub < ../../runJob-*-rnaseq.sh
 
 ### Exploration of region of interest
 
-1. The bam files will be located here:
-path-to-folder/*-rnaseq/analysis/*-rnaseq/work/align/SAMPLENAME/NAME_*-rnaseq_star/
+1. The bam files will be located here: `path-to-folder/*-rnaseq/analysis/*-rnaseq/work/align/SAMPLENAME/NAME_*-rnaseq_star/`
 
 2. Extracting interesting region (example)
 	- `samtools view -h -b  sample1.bam "chr2:176927474-177089906" > sample1_hox.bam`
