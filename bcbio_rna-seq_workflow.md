@@ -1,5 +1,5 @@
 # Bcbio RNA-Seq workflow
-**Documentation for bcbio: [bcbio-nextgen readthedocs](http://bcbio-nextgen.readthedocs.org/en/latest/contents/pipelines.html#rna-seq)**
+**Documentation for bcbio:** [bcbio-nextgen readthedocs](http://bcbio-nextgen.readthedocs.org/en/latest/contents/pipelines.html#rna-seq)
 
 ## Set-up
 1. One time only follow set-up instructions for [Rory's bcbio.rnaseq](https://github.com/roryk/bcbio.rnaseq): 
@@ -18,13 +18,13 @@
    	 	- Rory's code to concatenate files for the same samples on multiple lanes: 
     
 		```
-    barcodes="BC1 BC2 BC3 BC4"
-    for barcode in $barcodes
-    do
-    find software.rc.fas.harvard.edu -name $barcode_*R1.fastq.gz -exec cat {} \; > data/${barcode}_R1.fastq.gz
-    find software.rc.fas.harvard.edu -name $barcode_*R2.fastq.gz -exec cat {} \; > data/${barcode}_R2.fastq.gz
-    done
-    ```
+    		barcodes="BC1 BC2 BC3 BC4"
+    		for barcode in $barcodes
+    		do
+    		find folder -name $barcode_*R1.fastq.gz -exec cat {} \; > data/${barcode}_R1.fastq.gz
+    		find folder -name $barcode_*R2.fastq.gz -exec cat {} \; > data/${barcode}_R2.fastq.gz
+    		done
+    		```
 
    	- Download fastq files from BioPolymers: 
 		- `sftp username@bpfngs.med.harvard.edu`
