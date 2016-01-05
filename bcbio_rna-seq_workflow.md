@@ -1,5 +1,5 @@
 # Bcbio RNA-Seq workflow
-[bcbio-nextgen readthedocs](http://bcbio-nextgen.readthedocs.org/en/latest/contents/pipelines.html#rna-seq)
+**Documentation for bcbio: [bcbio-nextgen readthedocs](http://bcbio-nextgen.readthedocs.org/en/latest/contents/pipelines.html#rna-seq)**
 
 ## Set-up
 1. One time only follow set-up instructions for [Rory's bcbio.rnaseq](https://github.com/roryk/bcbio.rnaseq): 
