@@ -17,16 +17,12 @@
     		- `wget --mirror url` (for each file of sample in each lane)
    	 	- Rory's code to concatenate files for the same samples on multiple lanes: 
     
-
-	```
-    	barcodes="BC1 BC2 BC3 BC4"
-    	for barcode in $barcodes
-    	do
-    	find folder -name $barcode_*R1.fastq.gz -exec cat {} \; > data/${barcode}_R1.fastq.gz
-    	find folder -name $barcode_*R2.fastq.gz -exec cat {} \; > data/${barcode}_R2.fastq.gz
-    	done
-    	```
-
+    			barcodes="BC1 BC2 BC3 BC4"
+    			for barcode in $barcodes
+    			do
+    			find folder -name $barcode_*R1.fastq.gz -exec cat {} \; > data/${barcode}_R1.fastq.gz
+    			find folder -name $barcode_*R2.fastq.gz -exec cat {} \; > data/${barcode}_R2.fastq.gz
+    			done
 
    	- Download fastq files from BioPolymers: 
 		- `sftp username@bpfngs.med.harvard.edu`
