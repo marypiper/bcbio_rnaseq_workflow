@@ -119,7 +119,7 @@ bsub < ../../runJob-*-rnaseq.sh
 ```
 source ~/.bashrc
 cd ~/bcbio.rnaseq
-sub -Is -q interactive bash
+bsub -Is -q interactive bash
 lein run summarize path-to-project-summary.yaml -f "~batch+panel"
 ```
 2. Copy to local computer the results/*-rnaseq/ folder and the results/*-rnaseq/summary/qc-summary.Rmd
