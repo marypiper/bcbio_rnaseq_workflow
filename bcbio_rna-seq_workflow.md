@@ -91,8 +91,7 @@
 	#
 	date
 
-	bcbio_nextgen.py ../config/*-rnaseq.yaml -n 12 -t ipython -s lsf -q parallel '-rW=90:00' -r mincores=2
--rminconcores=2 --retries 3 --timeout 580
+	bcbio_nextgen.py ../config/*-rnaseq.yaml -n 64 -t ipython -s lsf -q parallel '-rW=90:00' -r mincores=2 -rminconcores=2 --retries 3 --timeout 580
 
 	date
 	```
