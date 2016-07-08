@@ -43,7 +43,7 @@
  export PATH=/opt/bcbio/centos/bin:$PATH
  ```
     
-5. Within the `meta` folder, add your comma-separated metadata file
+5. Within the `meta` folder, add your comma-separated metadata file (`projectname_rnaseq.csv`)
 	- first column is `samplename` and is the names of the fastq files as they appear in the directory
 	- second column is `description` and is unique names to call samples (can be the file name without the extension (.fastq or R#.fastq for paired-end reads))
 	- column entitled `samplegroup` is your sample groups
@@ -69,6 +69,7 @@
         star-illumina-rnaseq.yaml 
 ```
 	- Additional parameters can be found: [http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration](http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration) 
+	- Best practice templates can be found: [https://github.com/chapmanb/bcbio-nextgen/tree/master/config/templates](https://github.com/chapmanb/bcbio-nextgen/tree/master/config/templates)
 
  
 7. Within the `data` folder, add all your fastq files to analyze.
