@@ -1,4 +1,4 @@
-# Bcbio RNA-Seq workflow
+# Bcbio workflow
 **Documentation for bcbio:** [bcbio-nextgen readthedocs](http://bcbio-nextgen.readthedocs.org/en/latest/contents/pipelines.html#rna-seq)
 
 ## Set-up
@@ -48,8 +48,8 @@
 	- second column is `description` and is unique names to call samples (can be the file name without the extension (.fastq or R#.fastq for paired-end reads))
 	- column entitled `samplegroup` is your sample groups
 	- **FOR CHIP-SEQ** need additional columns:
-	- `phenotype`: `chip` or `input` for each sample
-	- `batch`: batch1, batch2, batch3, ... for grouping each input with it's appropriate chip(s)
+		- `phenotype`: `chip` or `input` for each sample
+		- `batch`: batch1, batch2, batch3, ... for grouping each input with it's appropriate chip(s)
 	- additional specifics regarding the metadata file: [http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration](http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration) 
         
 6. Within the `config` folder, add your custom Illumina template
