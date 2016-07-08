@@ -47,7 +47,6 @@
 	- first column is `samplename` and is the names of the fastq files as they appear in the directory
 	- second column is `description` and is unique names to call samples (can be the file name without the extension (.fastq or R#.fastq for paired-end reads))
 	- column entitled `samplegroup` is your sample groups
-
     	- **FOR CHIP-SEQ** need additional columns:
     	- `phenotype`: `chip` or `input` for each sample
     	- `batch`: batch1, batch2, batch3, ... for grouping each input with it's appropriate chip(s)
