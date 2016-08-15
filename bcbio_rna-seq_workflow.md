@@ -25,6 +25,10 @@
     			done
 
    	- Download fastq files from BioPolymers: 
+   		- `rsync -avr username@bpfngs.med.harvard.edu:./folder_name .`
+   		
+   		--OR--
+   		
 		- `sftp username@bpfngs.med.harvard.edu`
 		- `cd` to correct folder
 		- `mget *.tab`
