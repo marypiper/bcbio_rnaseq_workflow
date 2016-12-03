@@ -135,7 +135,7 @@ lein run summarize path-to-project-summary.yaml -f "~batch+panel"
 date_*-rnaseq/ .`
 
 3. Within R Studio:
-	- load library(knitrBootstrap)
+	- load `library(knitrBootstrap)`
 	- three dashes at top and bottom of knitrBootstrap specifics
 	- Copy over header info for knitrBootstrap
 	- Alter paths to files
