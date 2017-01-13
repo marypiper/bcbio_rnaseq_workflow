@@ -34,9 +34,11 @@
 		- `mget *.tab`
 		- `mget *.bz2`
 
+4. Create metadata in Excel create sym links by concatenate("ln -s ", column $A2 with path_to_where_files_are_stored, " ", column with name of sym link $D2). Can extract parts of column using delimiters in Data tab column to text.
 
+5. Save Excel as text and replace ^M with new lines in vim: :%s/<Ctrl-V><Ctrl-M>/\r/g
 
-4. Settings for bcbio- make sure you have following settings in `~/.bashrc` file:
+6. Settings for bcbio- make sure you have following settings in `~/.bashrc` file:
  
  ```
  unset PYTHONHOME
@@ -47,7 +49,7 @@
  export PATH=/opt/bcbio/centos/bin:$PATH
  ```
     
-5. Within the `meta` folder, add your comma-separated metadata file (`projectname_rnaseq.csv`)
+7. Within the `meta` folder, add your comma-separated metadata file (`projectname_rnaseq.csv`)
 	- first column is `samplename` and is the names of the fastq files as they appear in the directory
 	- second column is `description` and is unique names to call samples (can be the file name without the extension (.fastq or R#.fastq for paired-end reads))
 	- column entitled `samplegroup` is your sample groups
@@ -56,7 +58,7 @@
 		- `batch`: batch1, batch2, batch3, ... for grouping each input with it's appropriate chip(s)
 	- additional specifics regarding the metadata file: [http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration](http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration) 
         
-6. Within the `config` folder, add your custom Illumina template
+8. Within the `config` folder, add your custom Illumina template
     - Example template for human RNA-seq using Illumina prepared samples (genome_build for mouse = mm10):
 
 	```
@@ -76,7 +78,7 @@
 	- Best practice templates can be found: [https://github.com/chapmanb/bcbio-nextgen/tree/master/config/templates](https://github.com/chapmanb/bcbio-nextgen/tree/master/config/templates)
 
  
-7. Within the `data` folder, add all your fastq files to analyze.
+9. Within the `data` folder, add all your fastq files to analyze.
 
 ##Analysis
 
