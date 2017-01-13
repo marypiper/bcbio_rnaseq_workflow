@@ -36,9 +36,9 @@
 
 4. Create metadata in Excel create sym links by concatenate("ln -s ", column $A2 with path_to_where_files_are_stored, " ", column with name of sym link $D2). Can extract parts of column using delimiters in Data tab column to text.
 
-5. Save Excel as text and replace ^M with new lines in vim: :
+5. Save Excel as text and replace ^M with new lines in vim:
 
-`%s/<Ctrl-V><Ctrl-M>/\r/g`
+	`:%s/<Ctrl-V><Ctrl-M>/\r/g`
 
 6. Settings for bcbio- make sure you have following settings in `~/.bashrc` file:
  
