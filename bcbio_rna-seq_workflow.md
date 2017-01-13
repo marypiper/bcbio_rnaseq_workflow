@@ -76,6 +76,7 @@
           dir: ../results
         star-illumina-rnaseq.yaml 
 ```
+	- List of genomes available can be found by running `bcbio_setup_genome.py`
 	- Additional parameters can be found: [http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration](http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration) 
 	- Best practice templates can be found: [https://github.com/chapmanb/bcbio-nextgen/tree/master/config/templates](https://github.com/chapmanb/bcbio-nextgen/tree/master/config/templates)
 
