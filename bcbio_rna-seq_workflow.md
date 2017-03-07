@@ -24,7 +24,7 @@
     			find folder -name $barcode_*R2.fastq.gz -exec cat {} \; > data/${barcode}_R2.fastq.gz
     			done
 
-   	- Down load from password protected such as Dana Farber
+   	- Download from password protected FTP such as Dana Farber
 		- `wget -r <FTP address of folder> --user <username>  --password <pwd> <destination>`
 	
 	- Download fastq files from BioPolymers: 
