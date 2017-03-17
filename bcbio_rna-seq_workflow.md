@@ -78,7 +78,7 @@
         upload:
           dir: ../results
         star-illumina-rnaseq.yaml 
-```
+	```
 
 	- List of genomes available can be found by running `bcbio_setup_genome.py`
 	- strandedness options: `unstranded`, `firststrand`, `secondstrand`
