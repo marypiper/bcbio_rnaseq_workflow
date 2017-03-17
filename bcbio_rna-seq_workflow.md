@@ -73,7 +73,7 @@
             algorithm:
               aligner: star
               quality_format: Standard
-              trim_reads: read_through
+              trim_reads: False
               strandedness: firststrand 
         upload:
           dir: ../results
