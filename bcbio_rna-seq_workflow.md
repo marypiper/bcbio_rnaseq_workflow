@@ -118,9 +118,9 @@
 3. Go to work folder and start the job - make sure in an interactive session 
 
 	```
-cd path-to-folder/*-rnaseq/analysis/*-rnaseq/work
-bsub < ../../runJob-*-rnaseq.sh
-```
+	cd path-to-folder/*-rnaseq/analysis/*-rnaseq/work
+	bsub < ../../runJob-*-rnaseq.sh
+	```
 
 ### Exploration of region of interest
 
