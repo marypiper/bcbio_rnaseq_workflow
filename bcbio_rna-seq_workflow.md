@@ -119,7 +119,7 @@
 
 	```
 	cd path-to-folder/*-rnaseq/analysis/*-rnaseq/work
-	bsub < ../../runJob-*-rnaseq.sh
+	bsub < ../../runJob-*-rnaseq.lsf
 	```
 
 ### Exploration of region of interest
