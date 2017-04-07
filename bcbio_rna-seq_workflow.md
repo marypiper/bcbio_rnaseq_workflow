@@ -88,7 +88,7 @@
  
 9. Within the `data` folder, add all your fastq files to analyze.
 
-##Analysis
+## Analysis
 
 1. Go to analysis folder and create the full Illumina instructions using the Illumina template created in Set-up: step #6.
     - `bsub -Is -n 4 -q interactive bash` start interactive job
