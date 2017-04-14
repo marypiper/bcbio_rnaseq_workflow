@@ -149,3 +149,8 @@ date_*-rnaseq/ .`
 	- three dashes at top and bottom of knitrBootstrap specifics
 	- Copy over header info for knitrBootstrap
 	- Alter paths to files
+	
+	
+## Mounting bcbio
+
+`sshfs mp298@transfer.orchestra.med.harvard.edu:/n/data1/cores/bcbio ~/bcbio -o volname=bcbio -o follow_symlinks`
