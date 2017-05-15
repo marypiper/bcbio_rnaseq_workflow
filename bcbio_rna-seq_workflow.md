@@ -55,8 +55,8 @@
  ```
     
 7. Within the `meta` folder, add your comma-separated metadata file (`projectname_rnaseq.csv`)
-	- first column is `samplename` and is the names of the fastq files as they appear in the directory
-	- second column is `description` and is unique names to call samples (can be the file name without the extension (.fastq or R#.fastq for paired-end reads))
+	- first column is `samplename` and is the names of the fastq files as they appear in the directory (should be the file name without the extension (no .fastq or R#.fastq for paired-end reads))
+	- second column is `description` and is unique names to call samples - provide the names you want to have the samples called by 
 	- column entitled `samplegroup` is your sample groups
 	- **FOR CHIP-SEQ** need additional columns:
 		- `phenotype`: `chip` or `input` for each sample
