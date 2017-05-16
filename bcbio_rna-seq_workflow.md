@@ -48,7 +48,6 @@
  ```
  unset PYTHONHOME
  unset PYTHONPATH
- module load dev/java/jdk1.7
  module load stats/R/3.2.1
  module load dev/perl/5.18.1
  export PATH=/opt/bcbio/centos/bin:$PATH
