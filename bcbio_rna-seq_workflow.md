@@ -36,6 +36,9 @@
 		- `cd` to correct folder
 		- `mget *.tab`
 		- `mget *.bz2`
+		
+	- Download from the Broad using Aspera:
+		- To download data I use this [script]()
 
 4. Create metadata in Excel create sym links by concatenate("ln -s ", column $A2 with path_to_where_files_are_stored, " ", column with name of sym link $D2). Can extract parts of column using delimiters in Data tab column to text.
 
