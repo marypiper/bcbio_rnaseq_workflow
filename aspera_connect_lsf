@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#BSUB -q priority
+#BSUB -W 36:00
+#BSUB -n 1
+#BSUB -J broad_download
+#BSUB -o %J.out
+#BSUB -e %J.err
+
+#Add aspera to PATH
+export PATH=$PATH:~/.aspera/connect/bin
+
+#Create variable for FILEPASS
+export ASPERA_SCP_FILEPASS=password
+
+# Change directories to ascp_test, where the shares_download.sh script is located
+cd ~/ascp_test/
+
+# Download files from Broad to Orchestra bcbio Vafai folder
+./shares_download.sh .  https://shares.broadinstitute.org SN#######:encrpDtesTsitE SN######
