@@ -2,15 +2,8 @@
 **Documentation for bcbio:** [bcbio-nextgen readthedocs](http://bcbio-nextgen.readthedocs.org/en/latest/contents/pipelines.html#rna-seq)
 
 ## Set-up
-1. One time only follow set-up instructions for [Rory's bcbio.rnaseq](https://github.com/roryk/bcbio.rnaseq): 
-	- Install [lein](https://github.com/technomancy/leiningen) - I installed lein in ~/bin
-	- Add lein location to path in `~/.bashrc`:
-		- `export PATH=~/bin:$PATH`
-	- I could not get pandoc installed
-2. Make directory structure 
-    - `cd path-to-consult-folder`
-    - `mkdir analysis meta config data`
-    
+1. Follow instructions for starting an analysis using https://github.com/hbc/knowledgebase/blob/master/admin/guides/setting_up_an_analysis_guidelines.md.
+
 3. Download fastq files from facility to data folder
 	
 	- Download fastq files from a non-password protected url
@@ -49,37 +42,38 @@
 6. Settings for bcbio- make sure you have following settings in `~/.bashrc` file:
  
  ```
- unset PYTHONHOME
- unset PYTHONPATH
- module load stats/R/3.2.1
- module load dev/perl/5.18.1
- export PATH=/opt/bcbio/centos/bin:$PATH
+    unset PYTHONHOME
+    unset PYTHONPATH
+    export PATH=/n/app/bcbio/tools/bin:$PATH
  ```
     
 7. Within the `meta` folder, add your comma-separated metadata file (`projectname_rnaseq.csv`)
 	- first column is `samplename` and is the names of the fastq files as they appear in the directory (should be the file name without the extension (no .fastq or R#.fastq for paired-end reads))
 	- second column is `description` and is unique names to call samples - provide the names you want to have the samples called by 
-	- column entitled `samplegroup` is your sample groups
 	- **FOR CHIP-SEQ** need additional columns:
 		- `phenotype`: `chip` or `input` for each sample
 		- `batch`: batch1, batch2, batch3, ... for grouping each input with it's appropriate chip(s)
 	- additional specifics regarding the metadata file: [http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration](http://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#automated-sample-configuration) 
         
 8. Within the `config` folder, add your custom Illumina template
-    - Example template for human RNA-seq using Illumina prepared samples (genome_build for mouse = mm10):
+    - Example template for human RNA-seq using Illumina prepared samples (genome_build for mouse = mm10, human = hg19 or hg38 (need to change star to hisat2 if using hg38):
 
 	```
-        details:
-          - analysis: RNA-seq
-            genome_build: hg19
-            algorithm:
-              aligner: star
-              quality_format: Standard
-              trim_reads: False
-              strandedness: firststrand 
-        upload:
-          dir: ../results
-        star-illumina-rnaseq.yaml 
+	# Template for mouse RNA-seq using Illumina prepared samples
+	---
+	details:
+	  - analysis: RNA-seq
+	    genome_build: mm10
+	    algorithm:
+	      aligner: star
+	      quality_format: standard
+	      strandedness: firststrand
+	      tools_on: bcbiornaseq
+	      bcbiornaseq:
+		organism: mus musculus
+		interesting_groups: [genotype]
+	upload:
+	  dir: /n/data1/cores/bcbio/PIs/vamsi_mootha/hbc_mootha_rnaseq_of_metabolite_transporter_KO_mouse_livers_hbc03618_1/bcbio_final
 	```
 
 	- List of genomes available can be found by running `bcbio_setup_genome.py`
@@ -92,67 +86,47 @@
 
 ## Analysis
 
-1. Go to analysis folder and create the full Illumina instructions using the Illumina template created in Set-up: step #6.
-    - `bsub -Is -n 4 -q interactive bash` start interactive job
-    - `cd path-to-folder/*_RNAseq/analysis` change directories to analysis folder
-    - `bcbio_nextgen.py -w template ../config/star-illumina-rnaseq.yaml ../meta/*-rnaseq.csv ../data/*fastq.gz` run command to create the full yam file
+1. Go to `/n/scratch2/your_ECommonsID/PI` and create an `analysis` folder. Change directories to `analysis` folder and create the full Illumina instructions using the Illumina template created in Set-up: step #6.
+    - `srun --pty -p interactive -t 0-12:00 --mem 8G bash` start interactive job
+    - `cd path-to-folder/analysis` change directories to analysis folder
+    - `bcbio_nextgen.py -w template /n/data1/cores/bcbio/PIs/path_to_templates/star-illumina-rnaseq.yaml /n/data1/cores/bcbio/PIs/path_to_meta/*-rnaseq.csv /n/data1/cores/bcbio/PIs/path_to_data/*fastq.gz` run command to create the full yaml file
 
 2. Create script for running the job (in analysis folder)
 
 	```
 	#!/bin/sh
-	#BSUB -q priority
-	#BSUB -J *-rnaseq
-	#BSUB -o *-rnaseq.out
-	#BSUB -N
-	#BSUB -u "email@hsph.harvard.edu"
-	#BSUB -n 1
-	#BSUB -R "rusage[mem=8024]"
-	#BSUB -W 50:00
-	#
-	date
-
-	bcbio_nextgen.py ../config/*-rnaseq.yaml -n 64 -t ipython -s lsf -q parallel '-rW=90:00' -r mincores=2 -rminconcores=2 --retries 3 --timeout 580
-
-	date
+	#SBATCH -p priority
+	#SBATCH -J mootha
+	#SBATCH -o run.o
+	#SBATCH -e run.e
+	#SBATCH -t 0-100:00
+	#SBATCH --cpus-per-task=1
+	#SBATCH --mem-per-cpu=8G
+	#SBATCH --mail-type=ALL
+	#SBATCH --mail-user=piper@hsph.harvard.edu
+	
+	export PATH=/n/app/bcbio/tools/bin:$PATH
+	
+	/n/app/bcbio/dev/anaconda/bin/bcbio_nextgen.py ../config/\*\_rnaseq.yaml -n 48 -t ipython -s slurm -q medium -r t=0-100:00 --timeout 300 --retries 3
 	```
 
 3. Go to work folder and start the job - make sure in an interactive session 
 
 	```
-	cd path-to-folder/*-rnaseq/analysis/*-rnaseq/work
-	bsub < ../../runJob-*-rnaseq.lsf
+	cd /n/scratch2/path_to_folder/analysis/\*\_rnaseq/work
+	sbatch ../../runJob-\*\_rnaseq.slurm
 	```
 
 ### Exploration of region of interest
 
-1. The bam files will be located here: `path-to-folder/*-rnaseq/analysis/*-rnaseq/work/align/SAMPLENAME/NAME_*-rnaseq_star/`
+1. The bam files will be located here: `path-to-folder/*-rnaseq/analysis/*-rnaseq/work/align/SAMPLENAME/NAME_*-rnaseq_star/` # needs to be updated
 
 2. Extracting interesting region (example)
 	- `samtools view -h -b  sample1.bam "chr2:176927474-177089906" > sample1_hox.bam`
 
 	- `samtools index sample1_hox.bam`
 
-## Report generation
-1. Report creation and creating project_summary.csv
 
-```
-source ~/.bashrc
-cd ~/bcbio.rnaseq
-bsub -Is -q interactive bash
-lein run summarize path-to-project-summary.yaml -f "~batch+panel"
-```
-2. Copy to local computer the results/*-rnaseq/ folder and the results/*-rnaseq/summary/qc-summary.Rmd
-    - `scp -r username@orchestra.med.harvard.edu:path-to-folder/*-rnaseq/analysis/*-rnaseq/results/
-date_*-rnaseq/ .`
-
-3. Within R Studio:
-	- load `library(knitrBootstrap)`
-	- three dashes at top and bottom of knitrBootstrap specifics
-	- Copy over header info for knitrBootstrap
-	- Alter paths to files
-	
-	
 ## Mounting bcbio
 
 `sshfs mp298@transfer.orchestra.med.harvard.edu:/n/data1/cores/bcbio ~/bcbio -o volname=bcbio -o follow_symlinks`
