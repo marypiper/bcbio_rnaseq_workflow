@@ -86,7 +86,7 @@
 
 ## Analysis
 
-1. Go to `/n/scratch2/your_ECommonsID/PI` and create an `analysis` folder. Change directories to `analysis` folder and create the full Illumina instructions using the Illumina template created in Set-up: step #6.
+1. Go to `/n/scratch3/groups/hsph/hbc/your_ECommonsID/PI` and create an `analysis` folder. Change directories to `analysis` folder and create the full Illumina instructions using the Illumina template created in Set-up: step #6.
     - `srun --pty -p interactive -t 0-12:00 --mem 8G bash` start interactive job
     - `cd path-to-folder/analysis` change directories to analysis folder
     - `bcbio_nextgen.py -w template /n/data1/cores/bcbio/PIs/path_to_templates/star-illumina-rnaseq.yaml /n/data1/cores/bcbio/PIs/path_to_meta/*-rnaseq.csv /n/data1/cores/bcbio/PIs/path_to_data/*fastq.gz` run command to create the full yaml file
