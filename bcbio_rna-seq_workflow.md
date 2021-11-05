@@ -17,8 +17,10 @@
     			find folder -name $barcode_*R2.fastq.gz -exec cat {} \; > data/${barcode}_R2.fastq.gz
     			done
 
-   	- Download from password protected FTP such as Dana Farber
-		- `wget -r <FTP address of folder> --user <username>  --password <pwd> <destination>`
+   	- Download from password protected FTP such as: Dana Farber
+		- Dana Farber: `wget -r <FTP address of folder> --user <username>  --password <pwd> <destination>`
+
+		- MGH: `wget -r --user=<username> --password=<pwd> ftp://artemis.mgh.harvard.edu/*`
 	
 	- Download fastq files from BioPolymers: 
    		- `rsync -avr username@bpfngs.med.harvard.edu:./folder_name .`
